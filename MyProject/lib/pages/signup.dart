@@ -81,63 +81,16 @@ class _SignupState extends State<Signup> {
                   patient.fullname = nameController.text.trim();
                   patient.phoneNumber = phoneController.text.trim();
                   patient.role = "Patient";
-
-                  try {
-                    // إنشاء مستخدم await
-                    UserCredential userinfo = await FirebaseAuth.instance
-                        .createUserWithEmailAndPassword(
-                          email: patient.email!,
-                          password: patient.password!,
-                        );
-                    await FirebaseFirestore.instance
-                        .collection('users')
-                        .doc(userinfo.user!.uid)
-                        .set({
-                          'FullName': patient.fullname,
-                          'Email': patient.email,
-                          'PhoneNumber': patient.phoneNumber,
-                          'Role': patient.role,
-                          'PatientID': userinfo.user!.uid,
-                        });
-
-                    // الانتقال لصفحة Homepage
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => Homepage()),
-                    );
-
-                    // رسالة ترحيب
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          "تم إنشاء الحساب بنجاح ✅ ${patient.email}",
-                        ),
-                      ),
-                    );
-
-                    print("✅ patient created successfully: ${patient.email}");
-                  } on FirebaseAuthException catch (e) {
-                    String message = "";
-                    if (e.code == "email-already-in-use") {
-                      message = "هذا البريد مسجل بالفعل";
-                    } else if (e.code == "weak-password") {
-                      message = "كلمة المرور ضعيفة جدًا";
-                    } else {
-                      message = e.message ?? "حدث خطأ أثناء إنشاء الحساب";
-                    }
-
-                    ScaffoldMessenger.of(
-                      context,
-                    ).showSnackBar(SnackBar(content: Text("❌ $message")));
-
-                    print("❌ Error: $message");
-                  } catch (e) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("حدث خطأ غير متوقع")),
-                    );
-                    print("❌ Error: $e");
-                  }
+                  await patient.signup(
+                    patient.email!,
+                    patient.password!,
+                    patient.fullname!,
+                    patient.phoneNumber!,
+                    patient.role!,
+                    context,
+                  );
                 },
+
                 child: Text("إنشاء حساب"),
               ),
             ],
