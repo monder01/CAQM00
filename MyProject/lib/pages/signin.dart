@@ -1,9 +1,5 @@
 // lib/pages/signin.dart
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:prototype1/pages/adminsPage.dart';
-import 'package:prototype1/pages/appointmentPage.dart';
 import 'package:prototype1/oop/users.dart';
 
 class Signin extends StatefulWidget {

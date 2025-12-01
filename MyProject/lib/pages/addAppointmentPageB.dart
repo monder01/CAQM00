@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prototype1/oop/appointments.dart';
-import 'package:prototype1/oop/queues.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:prototype1/oop/patients.dart';
 
 class AddAppointmentPageB extends StatefulWidget {
   const AddAppointmentPageB({super.key});
