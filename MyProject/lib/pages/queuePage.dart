@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prototype1/oop/queues.dart';
 
 class Queuepage extends StatefulWidget {
   const Queuepage({super.key});

@@ -16,20 +16,45 @@ class _FormpageState extends State<Formpage> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
+          child: GridView.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
             children: [
-              SizedBox(height: 50),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Insurancepage()),
                   );
                 },
-                child: Text("تعبئة النموذج التأمين"),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.credit_card,
+                      size: 100,
+                      color: Colors.amberAccent[200],
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "تعبئة بيانات التأمين",
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: 20),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -38,7 +63,21 @@ class _FormpageState extends State<Formpage> {
                     ),
                   );
                 },
-                child: Text("تعبئة نموذج السجل المرضي"),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.history_edu,
+                      size: 100,
+                      color: Colors.amberAccent[200],
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      "تعبئة بيانات التاريخ الطبي",
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

@@ -47,7 +47,7 @@ class UserC {
       } else if (role == "Patient") {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Adminspage()),
+          MaterialPageRoute(builder: (context) => Appointmentpage()),
         );
       }
       ScaffoldMessenger.of(context).showSnackBar(
