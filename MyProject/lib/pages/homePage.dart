@@ -27,9 +27,9 @@ class Homepage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Column(
-            mainAxisAlignment:
-                MainAxisAlignment.center, // توسيط العناصر عمودياً
+            mainAxisAlignment: MainAxisAlignment.start, // توسيط العناصر عمودياً
             children: [
+              SizedBox(height: 100), // مسافة فارغة في الأعلى
               // نص الترحيب الرئيسي
               Text(
                 "أهلاً بك في عيادتي",

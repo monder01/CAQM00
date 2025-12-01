@@ -56,10 +56,20 @@ class UserC {
           showCloseIcon: true,
         ),
       );
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
+      String message = "";
+      if (e.code == "user-not-found") {
+        message = "المستخدم غير موجود";
+      } else if (e.code == "wrong-password") {
+        message = "كلمة المرور غير صحيحة";
+      } else if (e.code == "invalid-email") {
+        message = "البريد الإلكتروني غير صالح";
+      } else {
+        message = e.message ?? "حدث خطأ أثناء تسجيل الدخول";
+      }
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("حدث خطأ غير متوقع")));
+      ).showSnackBar(SnackBar(content: Text("❌ $message")));
       print("Error: $e");
     }
   }
