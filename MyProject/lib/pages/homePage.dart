@@ -11,8 +11,16 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       // شريط التطبيق العلوي
       appBar: AppBar(
-        title: Text("My Clinic"),
+        title: Text(
+          "عيادتي",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+          ),
+        ),
         backgroundColor: Colors.amberAccent[200],
+        centerTitle: true,
       ),
 
       // يضمن عدم تداخل المحتوى مع حواف الجهاز
@@ -24,7 +32,7 @@ class Homepage extends StatelessWidget {
             children: [
               // نص الترحيب الرئيسي
               Text(
-                "Welcome to My Clinic",
+                "أهلاً بك في عيادتي",
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,

@@ -1,8 +1,9 @@
+// lib/oop/users.dart
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:prototype1/pages/adminsPage.dart';
-import 'package:prototype1/pages/homePage.dart';
+import 'package:prototype1/pages/appointmentPage.dart';
 
 class UserC {
   String? fullname;
@@ -62,8 +63,9 @@ class UserC {
       print("Error: $e");
     }
   }
-  //-----------------------------------
 
+  //-----------------------------------
+  // تسجيل مستخدم جديد باستخدام البريد الإلكتروني وكلمة المرور
   Future<void> signup(
     String emailController,
     String passwordController,
@@ -95,7 +97,7 @@ class UserC {
       // الانتقال لصفحة Homepage
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Homepage()),
+        MaterialPageRoute(builder: (context) => Appointmentpage()),
       );
 
       // رسالة ترحيب
