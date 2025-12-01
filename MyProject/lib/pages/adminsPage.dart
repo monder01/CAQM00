@@ -1,5 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prototype1/pages/addDoctor.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:prototype1/pages/homePage.dart';
 
 class Adminspage extends StatefulWidget {
   const Adminspage({super.key});
@@ -22,8 +25,25 @@ class _AdminspageState extends State<Adminspage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Admins Page"),
-        backgroundColor: Colors.amberAccent[200], // عنوان شريط التطبيق
-      ),
+        backgroundColor: Colors.amberAccent[200],
+        automaticallyImplyLeading: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 35),
+            child: IconButton(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => Homepage()),
+                  (route) => false,
+                );
+              },
+              icon: Text("تسجيل خروج"),
+            ),
+          ),
+        ],
+      ), // عنوان شريط التطبيق
       body: _pages[i],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: i,

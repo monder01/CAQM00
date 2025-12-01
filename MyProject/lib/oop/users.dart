@@ -49,7 +49,7 @@ class UserC {
       }
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("مرحبا بك في عيادتنا $fullname"),
+          content: Text("مرحبا بك في عيادتنا 😝 $fullname"),
           showCloseIcon: true,
         ),
       );

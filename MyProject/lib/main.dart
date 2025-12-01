@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prototype1/pages/Manageappointment%20copy.dart';
+import 'package:prototype1/pages/homePage.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "My Clinc", // تعيين عنوان التطبيق
       home:
-          Manageappointment(), // تحديد الصفحة الرئيسية التي يتم عرضها عند بدء تشغيل التطبيق
+          Homepage(), // تحديد الصفحة الرئيسية التي يتم عرضها عند بدء تشغيل التطبيق
     );
   }
 }
