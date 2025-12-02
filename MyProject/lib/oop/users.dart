@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:prototype1/pages/adminsPage.dart';
-import 'package:prototype1/pages/appointmentPage.dart';
+import 'package:prototype1/pages/patientPage.dart';
 
 class UserC {
   String? fullname;
@@ -47,7 +47,7 @@ class UserC {
       } else if (role == "Patient") {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => Appointmentpage()),
+          MaterialPageRoute(builder: (context) => Patientpage()),
         );
       }
       ScaffoldMessenger.of(context).showSnackBar(
@@ -107,7 +107,7 @@ class UserC {
       // الانتقال لصفحة Homepage
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Appointmentpage()),
+        MaterialPageRoute(builder: (context) => Patientpage()),
       );
 
       // رسالة ترحيب
