@@ -5,22 +5,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 class Showappointment extends StatefulWidget {
   const Showappointment({super.key, this.patientIdd});
   final String? patientIdd;
+
   @override
   State<Showappointment> createState() => _ShowappointmentState();
 }
 
 class _ShowappointmentState extends State<Showappointment> {
   final currentUserId = FirebaseAuth.instance.currentUser!.uid;
-  bool whoisUseing() {
-    if (widget.patientIdd != null) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   String? currentUser;
-  void checkuser() {
+
+  @override
+  void initState() {
+    super.initState();
     if (widget.patientIdd != null) {
       currentUser = widget.patientIdd;
     } else {
@@ -28,7 +24,6 @@ class _ShowappointmentState extends State<Showappointment> {
     }
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

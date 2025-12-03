@@ -85,6 +85,7 @@ class _FindPatientState extends State<FindPatient> {
                               icon: Icon(Icons.add, color: Colors.blue),
                               onPressed: () {
                                 String? patientId = doc.id;
+                                print('patientId : $patientId');
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -99,6 +100,7 @@ class _FindPatientState extends State<FindPatient> {
                               icon: Icon(Icons.edit, color: Colors.blue),
                               onPressed: () {
                                 String? patientId = doc.id;
+                                print('patientId : $patientId');
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(

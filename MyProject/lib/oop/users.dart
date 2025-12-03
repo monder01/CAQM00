@@ -101,7 +101,7 @@ class UserC {
             'Email': email,
             'PhoneNumber': phoneNumber,
             'Role': role,
-            'PatientID': userinfo.user!.uid,
+            'UserID': userinfo.user!.uid,
           });
 
       // الانتقال لصفحة Homepage
