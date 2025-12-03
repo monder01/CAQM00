@@ -10,17 +10,26 @@ class Showappointment extends StatefulWidget {
 }
 
 class _ShowappointmentState extends State<Showappointment> {
+  final currentUserId = FirebaseAuth.instance.currentUser!.uid;
+  bool whoisUseing() {
+    if (widget.patientIdd != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  String? currentUser;
+  void checkuser() {
+    if (widget.patientIdd != null) {
+      currentUser = widget.patientIdd;
+    } else {
+      currentUser = currentUserId;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final currentUserId = FirebaseAuth.instance.currentUser!.uid;
-    bool whoisUseing() {
-      if (widget.patientIdd != null) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: Text('مواعيدي'),
@@ -29,7 +38,7 @@ class _ShowappointmentState extends State<Showappointment> {
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('Appointments')
-            .where('patientId', isEqualTo: currentUserId)
+            .where('patientId', isEqualTo: currentUser)
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {

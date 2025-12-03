@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:prototype1/pages/addAppointmentPage.dart';
+import 'package:prototype1/pages/showAppointment.dart';
 
 class FindPatient extends StatefulWidget {
   const FindPatient({super.key});
@@ -77,18 +78,37 @@ class _FindPatientState extends State<FindPatient> {
                         leading: Icon(Icons.person, color: Colors.amber),
                         title: Text("الاسم: ${doc['FullName']}"),
                         subtitle: Text("رقم الهاتف: ${doc['PhoneNumber']}"),
-                        trailing: IconButton(
-                          icon: Icon(Icons.add, color: Colors.blue),
-                          onPressed: () {
-                            String? patientId = doc.id;
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    AddAppointmentPage(patientIdd: patientId),
-                              ),
-                            );
-                          },
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.add, color: Colors.blue),
+                              onPressed: () {
+                                String? patientId = doc.id;
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AddAppointmentPage(
+                                      patientIdd: patientId,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.edit, color: Colors.blue),
+                              onPressed: () {
+                                String? patientId = doc.id;
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        Showappointment(patientIdd: patientId),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         ),
                       ),
                     );
