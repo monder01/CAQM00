@@ -10,7 +10,10 @@ class Appointment {
   String? reason;
   String? status; // booked, completed, canceled
   String? lineNumber;
+  String? appointmentType;
+  double? cost;
 
+  /// التحقق من توفر الوقت
   Future<bool> isTimeAvailable(
     String doctorId,
     String time,
@@ -155,17 +158,21 @@ class Appointment {
     required String doctorId,
     required String doctorName,
     required String time,
+    String? appointmentType,
+    double? cost,
+    String? patientId,
   }) async {
-    final thisUser = FirebaseAuth.instance.currentUser;
-    if (thisUser == null) return;
+    if (patientId == null) return;
 
     final date = DateTime.now().toIso8601String().substring(0, 10);
     await FirebaseFirestore.instance.collection('Appointments').add({
       'doctorId': doctorId,
       'doctorName': doctorName,
-      'patientId': thisUser.uid,
+      'patientId': patientId,
       'time': time,
       'date': date,
+      'appointmentType': appointmentType,
+      'cost': cost,
     });
   }
 }

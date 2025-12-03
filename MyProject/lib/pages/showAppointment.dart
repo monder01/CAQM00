@@ -2,12 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class Showappointment extends StatelessWidget {
-  const Showappointment({super.key});
+class Showappointment extends StatefulWidget {
+  const Showappointment({super.key, this.patientIdd});
+  final String? patientIdd;
+  @override
+  State<Showappointment> createState() => _ShowappointmentState();
+}
 
+class _ShowappointmentState extends State<Showappointment> {
   @override
   Widget build(BuildContext context) {
     final currentUserId = FirebaseAuth.instance.currentUser!.uid;
+    bool whoisUseing() {
+      if (widget.patientIdd != null) {
+        return true;
+      } else {
+        return false;
+      }
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -40,7 +52,7 @@ class Showappointment extends StatelessWidget {
                   leading: Icon(Icons.schedule, color: Colors.amber),
                   title: Text("الطبيب: ${doc['doctorName']}"),
                   subtitle: Text(
-                    "التاريخ: ${doc['date']}\nالوقت: ${doc['time']}",
+                    "التاريخ: ${doc['date']} - الوقت: ${doc['time']} \nالنوع: ${doc['appointmentType']} - التكلفة: \$${doc['cost']}",
                   ),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,

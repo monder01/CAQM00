@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prototype1/pages/addDoctor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:prototype1/pages/findPatient.dart';
 import 'package:prototype1/pages/homePage.dart';
 
 class Adminspage extends StatefulWidget {
@@ -15,7 +16,7 @@ class _AdminspageState extends State<Adminspage> {
 
   // الصفحات البسيطة
   final List<Widget> _pages = [
-    Center(child: Text('المواعيد')),
+    FindPatient(),
     Adddoctor(),
     Center(child: Text('الملف الشخصي')),
   ];
